@@ -1,0 +1,50 @@
+
+
+<h1>Candidates</h1>
+
+<table>
+    <thead>
+  <tr>
+    <th>Name</th>
+    <th>Contact no</th>
+    <th>Available in</th>
+    <th width=100>Salary expectation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+
+<tbody>
+<% @candidates.each do |candidate| %>
+  <tr>
+    <td><%= link_to candidate.name, show_profile_path(candidate.id) %></td>
+    <td><%= candidate.contact_no %></td>
+    <td><%= candidate.available_in %> days</td>
+    <td><%= candidate.salary_expectation %></td>
+
+    <!--    Skype URI Button  -->
+        <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+        <td id="<%=candidate.created_at%>" >
+            <script type="text/javascript">
+            Skype.ui({
+            "name": "dropdown",
+            "element": "<%=candidate.created_at%>",
+            "participants": ["<%=candidate.skype_name%>"],
+            "imageSize": 20
+            });
+            </script>
+        </td>
+</tbody>
+
+<!--     <td><%= link_to 'Show', candidate %></td>
+    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+    <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<!-- <%= link_to 'New Candidate', new_candidate_path %> -->

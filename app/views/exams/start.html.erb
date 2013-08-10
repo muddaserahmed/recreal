@@ -1,0 +1,109 @@
+<div class="row">
+<div class="large-12 columns">
+
+<%= csrf_meta_tag %>
+<!-- 
+<script language="javascript">
+  jQuery(function($) {
+    $('input').change(function() {
+      alert('awesome!!!');
+    });
+  });
+</script>
+ -->
+<h3><%= @title %></h3>
+
+
+
+<!--   <div title="<%= session[:started_at] %>" id="countdown" class="right" style="color: black; font-weight:bold;">Countdown</div> -->
+
+
+<b><div id="countdown" style="margin: 15px; border: thin solid #cccccc; padding: 5px" class = "right">Countdown will appear here</div></b>
+<!-- 
+<script language="JavaScript">
+  // window.onunload = clearSession;
+  // window.onbeforeunload = confirmExit;
+  // function confirmExit()
+  // {
+  //      return "Muddaser";
+
+  // }
+
+  // // function clearSession(){
+  // //     element1 = document.getElementById('finish');
+
+  // //     if(element1 != null)
+  // //     {
+  // //         element1.click();
+  // //     }
+
+
+
+  }
+
+</script>
+ -->
+
+
+<script language="JavaScript">
+  window.onbeforeunload = confirmExit;
+  timeout = 0;
+  function confirmExit()
+  {
+    if(timeout == 0){return "Second attemps are not allowed in exams";}
+    else{
+      element1 = document.getElementById('finish');
+      if(element1 != null)
+      {
+          element1.click();
+      }
+    }
+  }
+
+
+  window.onunload = clearSession;
+  function clearSession(){
+
+  }
+
+
+
+</script>
+
+<script type="text/javascript">
+function startTimer(num) {
+    count = num;
+
+    countdown = setInterval(function () {
+        if (count >= 0) {  
+
+            if(count==num){ 
+                $("#countdown").text([count]).hide().fadeIn(300);
+            } else{
+                $("#countdown").text([count]);
+            }         
+            count--;
+        } else {
+
+timeout = 1;
+element1 = document.getElementById('finish');
+if(element1 != null)
+{
+    element1.click();
+}
+        }
+    }, 1000);
+ };
+
+startTimer("<%=@exam.time_limit.minutes%>");
+</script>
+
+<div id="question">
+  <%= render ("question") %>
+</div>
+
+
+
+
+</div>
+</div>

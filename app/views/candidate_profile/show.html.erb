@@ -1,0 +1,154 @@
+
+<div class="row" style=" box-shadow: 0px 0px 7px #888888;">
+
+
+<div class="row" style="margin: 10px;">
+  <div class="right">
+    <a href="http://pk.linkedin.com/pub/muddaser-ahmed/30/418/90a">
+          <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x33.png" width="160" height="33" border="0" alt="View Muddaser Ahmed's profile on LinkedIn">
+    </a>
+  </div>
+  </div>
+
+
+
+<script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+<div class="right">
+        <div class id="<%=@candidate.created_at%>" >
+            <script type="text/javascript">
+            Skype.ui({
+            "name": "dropdown",
+            "element": "<%=@candidate.created_at%>",
+            "participants": ["<%=@candidate.skype_name%>"],
+            "imageSize": 50
+            });
+            </script>
+          </div>
+        </div>
+
+
+<!--  Top header Div image name summary headline   -->
+<div class="row" style="background-color: #f5f5f5; border: thin solid #cccccc; margin: 10px; padding: 10px;  box-shadow: 0px 0px 7px #888888; border-radius: 8px;">
+
+
+  <div class="large-4 column" style="margin: 10px; padding: 10px;" >
+  	<div class="thumbnail">
+      <img src="<%= @basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
+    </div>
+  </div>
+
+    <div class"large-8 column" style="margin: 10px; padding: 10px;">      
+      <h1 style="background-color: #2BA6CB; box-shadow: 0px 0px 7px #888888; border-radius: 8px; color: #FFFFFF"><%= @basic_profile.formatted_name %></h1>
+      <h4 style=" background-color: #E0E0E0;"><%= @basic_profile.headline %></h4>
+      <br>
+      <p><%= @basic_profile.summary %></p>
+    </div>
+
+
+  </div>
+
+
+
+<!-- 
+<div class="row" style="margin-top: 16px; ">
+    <div class="large-11 columns" style="margin: 35px; padding: 5px; background-color: #f5f5f5;  box-shadow: 5px 5px 7px #888888; border-radius: 8px; border: thin solid #cccccc;">
+		<h1  style="background-color: #E0E0E0; padding: 5px;  border-radius: 8px; box-shadow: 0px 0px 7px #888888;">Positions</h1>
+  	<table class="table table-striped" >
+  		<thead style="text-align: left; vertical-align: top; background-color: #2BA6CB; border-radius: 8px; ">
+  			<th style=" color: #FFFFFF;">Title</th>
+  			<th style=" color: #FFFFFF;">Summary</th>
+  			<th style=" color: #FFFFFF;">Company Name</th>
+  			<th style=" color: #FFFFFF;">Is Current</th>
+  			<th style=" color: #FFFFFF;">Start Date</th>
+  			<th style=" color: #FFFFFF;">End Date</th>
+  		</thead>
+  		<% @positions.each do |p| %>
+  			<tbody style="text-align: left; vertical-align: top; ">
+  				<td><%= p.title %></td>
+  				<td><%= p.summary %></td>
+  				<td><%= p.company %></td>
+  				<td><%= p.is_current %></td>
+  				<td><%= p.start_date %></td>
+  				<td><%= p.end_date %></td>
+  			</tbody>
+  		<% end %>
+		</table>
+  </div>
+</div>
+
+
+<div class="row" style="margin-top: 16px; ">
+    <div class="large-11 columns" style="margin: 35px; padding: 5px; background-color: #f5f5f5;  box-shadow: 5px 5px 7px #888888; border-radius: 8px; border: thin solid #cccccc;">
+    <h1  style="background-color: #E0E0E0; padding: 5px;  border-radius: 8px; box-shadow: 0px 0px 7px #888888;">Positions</h1>
+      <% @positions.each do |p| %>
+          <h5><%= p.title %></h5>
+          <h6><%= p.company %></h6>
+              <% if p.is_current?%>
+              <h7><%="#{p.start_date} - present"%></h7>
+              <%else%>
+              <h7><%="#{p.start_date} - #{p.end_date}" %></h7>
+              <%end%>
+          <p><%= p.summary %></p>
+      <% end %>
+  </div>
+</div>
+ -->
+<div class="row" style="margin-top: 16px; margin: 10px">
+    <div class="large-12 columns" style="padding: 5px; background-color: #f5f5f5;  box-shadow: 0px 0px 7px #888888; border-radius: 8px; border: thin solid #cccccc;">
+    <h2  style="background-color: #2BA6CB; padding: 5px;  border-radius: 8px; box-shadow: 0px 0px 7px #888888; color: #FFFFFF;">Experience</h2>
+      <% @positions.each do |p| %>
+          <h5><%= p.title %></h5>
+          <h6><%= p.company %></h6>
+              <% if p.is_current?%>
+              <h7 style="color: #919191;"><%="#{p.start_date} - present"%></h7>
+              <%else%>
+              <h7 style="color: #919191;"><%="#{p.start_date} - #{p.end_date}" %></h7>
+              <%end%>
+          <p><%= p.summary %></p>
+      <% end %>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 16px; margin: 10px">
+    <div class="large-12 columns" style=" padding: 5px; background-color: #f5f5f5; box-shadow: 0px 0px 7px #888888; border-radius: 8px; border: thin solid #cccccc;">
+  	<h2  style="background-color: #2BA6CB; padding: 5px;  border-radius: 8px; color: #FFFFFF; box-shadow: 0px 0px 7px #888888;">Education</h2>
+  		<% @educations.each do |e| %>
+  				<h5><%= e.school_name %></h5>
+  				<h6><%= "#{e.degree}, #{e.field_of_study}" %></h5>
+          <h7 style="color: #919191;"><%="#{e.start_date} - #{e.end_date}" %></h7>
+          <h6><%= e.activities %></h6>
+          <h6><%= e.notes %></h6>
+  		<% end %>
+  </div>
+</div>
+
+
+<%if !@full_profile.nil?%> 
+  <div class="row" style="margin: 10px">
+ 
+    <div class="small-12 columns" style="background-color: #f5f5f5; border: thin solid #cccccc; padding: 5px;  border-radius: 8px; box-shadow: 0px 0px 7px #888888;">
+
+<%if !@full_profile.interests.nil?%>
+      <h4 style="background-color: #2BA6CB; padding: 5px; border-radius: 8px; color: #FFFFFF; box-shadow: 0px 0px 7px #888888;">Interests</h5>
+      <p><%= @full_profile.interests %></p>
+      <br>
+<%end%>
+
+<%if !@full_profile.associations.nil?%>
+      <h4 style="background-color: #2BA6CB; padding: 5px; border-radius: 8px; color: #FFFFFF; box-shadow: 0px 0px 7px #888888;">Associations</h5>
+      <p><%= @full_profile.associations %></p>
+      <br>
+<%end%>
+
+<%if !@full_profile.honors.nil?%>
+      <h4 style="background-color: #2BA6CB; padding: 5px; border-radius: 8px; color: #FFFFFF; box-shadow: 0px 0px 7px #888888;">Honors</h5>
+      <p><%= @full_profile.honors %></p>
+      <br>
+<%end%>  
+
+  </div>
+</div>
+<%end%>
+
+
+</div>

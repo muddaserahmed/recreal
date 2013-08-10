@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  available_in: 1
+  contact_no: MyString
+  name: MyString
+  salary_expectation: MyString
+  skype_name: MyString
+
+two:
+  available_in: 1
+  contact_no: MyString
+  name: MyString
+  salary_expectation: MyString
+  skype_name: MyString

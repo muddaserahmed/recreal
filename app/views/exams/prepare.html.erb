@@ -1,0 +1,20 @@
+<div class="row">
+<div class="large-12 columns">
+
+
+<h2><%= @title %></h2>
+
+<%= form_tag(start_exam_path, :method => "post") do %>
+
+<% @exam.sections.each do |section| %>
+  <label class="checkbox">
+    <%= check_box_tag("section-"+section.id.to_s, nil, true) %> <%= section.title %>
+  </label>
+<% end %>
+
+<p><p><%= submit_tag "OK", :class => "button radius" %>
+<% end %>
+
+
+</div>
+</div>

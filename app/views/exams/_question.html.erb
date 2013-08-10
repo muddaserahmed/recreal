@@ -1,0 +1,51 @@
+
+<%= csrf_meta_tag %>
+<div class="well">
+
+
+
+
+<div style="background-color: #f5f5f5; border: thin solid #cccccc; margin: 10px; text-align: left; padding: 10px;">
+
+
+  <h3>Question <%= @current_que %> of <%= session[:qty] %></h3><br />
+  <b><%= @question.title %></b>
+</div>
+
+</div>
+
+<form style="margin: 15px">
+<% @answers.each do |answer| %>
+  <% case answer.question.type.id
+  when 1 %>
+    <label class="radiobutton">
+      <%= radio_button_tag "answer", answer.id, (session[:answer][@current_que].present? and session[:answer][@current_que] == answer.id) %> <%= answer.title %>
+    </label>
+      
+  <% when 2 %>
+    <label class="checkbox">
+      <%= check_box_tag "answer[]", answer.id, (session[:answer][@current_que].present? and session[:answer][@current_que].include? answer.id) %> <%= answer.title %>
+    </label>
+  <% else %>
+    <h1>Unknown question type!</h1>
+  <% end %>
+<% end %>
+</form>
+
+<br />
+
+<div style="float:left;"><%= button_to "<<< Prev", start_exam_path+"/#{@current_que-1}", :id => "prev", :remote => true, :class => "button radius", :disabled => !(@current_que > 1) %></div>
+<div style="float:left;"><%= button_to "Next >>>", start_exam_path+"/#{@current_que+1}", :id => "next", :remote => true, :class => "button radius", :disabled => !(@current_que < session[:qty]) %></div>
+<div style="float:right;"><%= button_to "Finish", finish_exam_path, :id => "finish", :class => "button radius" %></div><div style="clear:both;"></div>
+
+
+
+<!-- <div class="accordion-heading">
+  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Information</a>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+  <div class="accordion-inner">
+    <%= session %>
+  </div>
+</div>
+ -->

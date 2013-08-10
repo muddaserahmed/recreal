@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
+
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+<%= stylesheet_link_tag    "application", :media => "all" %>
+
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "jquery.countdown.min" %>
+    <%= csrf_meta_tags %>
+
+
+<!-- 
+        <style>
+      body {
+        padding-top: 60px;  60px to make the container go all the way to the bottom of the topbar 
+      }
+    </style>
+     -->
+  </head>
+
+  <body>
+
+    <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name"><h1><a href="/home/index">RecReal </a></h1>
+          </li>  
+              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="/home/index"><span>Menu</span></a></li>
+
+        </ul>
+
+
+         <section class="top-bar-section">  
+        
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="active"><a href="/exams/1/">Wanna take a quick Test?</a></li>
+            <li class="divider"></li>
+          </ul>
+         
+          
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="active"><a href="/rAdmin">Admin Panel</a></li>
+            <li class="divider"></li>
+          </ul>
+         </section>
+
+            <div style="color: #999; display:block;float: right; padding:10px 20px 10px;" class="nav">
+            <% if user_signed_in? %>
+              You are logged in as <%= current_user.email %> (<%= link_to "Log out", destroy_user_session_path %>)
+            <% else %>
+              <%= link_to 'Log in', new_user_session_path if !user_signed_in? %>
+            <% end %>
+          </div> 
+
+</nav> 
+
+
+<!-- 
+<nav class="top-bar">
+  <ul class="title-area">
+    
+    <li class="name">
+      <h1><a href="#">Top Bar Title </a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="/home/index"><span>Menu</span></a>
+
+
+
+
+
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+   
+    <ul class="left">
+      <li class="divider"></li>
+      <li class="active"><a href="#">Main Item 1</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Main Item 2</a></li>
+      <li class="divider"></li>
+      
+
+    </ul>
+  </section>
+</nav>
+ -->
+
+
+  <div class="row">
+    <div class="large-12 columns">
+
+
+    <% if flash[:notice] %>
+    <div id="notice"><% flash[:notice] %></div>
+    <% end %>
+      
+    <%= yield %>
+    </div>
+</div>
+    
+    <%= javascript_include_tag 'jquery', "application" %>
+  </body>
+</html>

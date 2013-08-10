@@ -1,0 +1,99 @@
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    new Highcharts.Chart({
+      chart: { type: 'bar', renderTo: 'orders_chart' },
+      title: { text: '' },
+      xAxis: { categories: ['Points'] },
+      yAxis: { min: 0, title: '' },
+      legend: {
+        backgroundColor: '#FFFFFF',
+        reversed: true
+      },
+      series: [{
+        name: 'The maximum score',
+        data: [<%= @score_max %>] },
+      {
+        name: 'A passing score',
+        data: [<%= @exam.pass_score %>] },
+      {
+        name: 'Your scores',
+        data: [<%= @score %>]
+      }]
+    });
+  });
+</script>
+
+<h2 style="text-align:center;"><%= @title %></h2>
+<h4 style="text-align:center;"><%= @exam.number %>. <%= @exam.title %></h4>
+<dl class="dl-horizontal">
+  <dt>Name and surname</dt>
+  <dd>anonymous</dd>
+  <dt>delivery Date</dt>
+  <dd><%= Time.now %></dd>
+  <dt>duration</dt>
+  <dd><%= Time.at(session[:finish_at]).utc.strftime("%H:%M:%S") %></dd>
+  <dt>attempt</dt>
+  <dd><%= session[:try] %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>A passing score</dt>
+  <dd><%= @exam.pass_score %> from <%= @score_max %></dd>
+  <dt>your score</dt>
+  <dd><%= @score %> (correctly answered by <%= @correctCount %> <%= p(@correctCount, "question","question","questions") %> from <%= session[:qty] %>)</dd>
+  <dt>result</dt>
+  <dd><%= @isPass ? "<span class='label label-success'>PASS</span>".html_safe : "<span class='label label-important'>Fail</span>".html_safe %></dd>
+</dl>
+<div id="orders_chart" style="width: 100%; height: 260px;"></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>section
+      <th>Number of issues
+      <th>Percentage of correct answers
+    </tr>
+  </thead>
+  <tbody>
+<% @sections.each do |section| %>
+  <tr>
+    <td><%= section.title %>
+    <td><%= @questions.where(:section_id => section.id).size %>
+    <td><%= @questions.where(:section_id => section.id).size > 0 ? @result.select { |r| (r.question.section.id == section.id and r["is_correct"] == true) }.size * 100 / @questions.where(:section_id => section.id).size : 0 %>%
+<% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th># question
+      <th># Real that id
+      <th># answer
+      <th># section
+      <th>True/False
+      <th>Points
+  </thead>
+<tbody>
+  <% @result.each_with_index do |r,i| %>
+  <tr>
+    <td><%= i+1 %>
+    <td title="<%= r.question.title %>"><%= r.question_id %>
+    <td title="<%= r.answer.nil? ? "no answer" : "" %>"><%= r.answer.nil? ? "<span class='label label-important'>No Answer</span>".html_safe : r.answer %>
+    <td><%= r.question.section.title %>
+    <td><%= r.weight > 0 ? "<span class='label label-success'>right</span>".html_safe : "<span class='label label-important'>wrong</span>".html_safe %>
+    <td><%= r.score %>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+
+<div class="accordion-heading">
+  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Information</a>
+</div>
+<div id="collapseOne" class="accordion-body collapse">
+  <div class="accordion-inner">
+    <%= p @result.inspect %><br /><br />
+    <%= session %>
+  </div>
+</div>

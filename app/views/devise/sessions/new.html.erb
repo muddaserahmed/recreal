@@ -1,0 +1,39 @@
+<div class="row">
+
+
+<div class="large-4 columns">
+<h2>Sign in</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div><%= f.submit "Sign in", :class => "button radius" %></div>
+<% end %>
+
+<%= link_to "Sign Up to post jobs", new_employer_path %><br />
+<%= link_to "Sign Up as a job seeker", new_candidate_path %><br />
+
+<%= render "devise/shared/links" %>
+
+</div>
+
+<div class="large-4 columns">
+<h2>About Us</h2>
+When we started out, we specialised in providing Support staff. But a lot happens in 15 years and we’ve changed as we’ve grown.  Result: we’re now firmly established as a leading force in recruitment for the media, creative, arts and fashion industries in London and the South East.
+
+We provide staff on a temporary, contract, freelance and permanent basis. Every day, we fill positions across a wide range of fields and roles, including:
+
+HR - Marketing - Advertising - PR - Music - Production - Support- Broadcast- Finance - Fashion - Public Sector
+
+Even if your recruitment task falls outside the above, feel free to talk to us anyway.  The same principles apply, whatever sector you’re recruiting in - which is how our sphere of expertise has expanded so much over the years. 
+</div>
+
+</div>

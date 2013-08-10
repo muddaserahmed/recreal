@@ -1,0 +1,25 @@
+<h1>Listing employers</h1>
+
+<table>
+  <tr>
+    <th>Company name</th>
+    <th>Website</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employers.each do |employer| %>
+  <tr>
+    <td><%= employer.company_name %></td>
+    <td><%= employer.website %></td>
+    <td><%= link_to 'Show', employer %></td>
+    <td><%= link_to 'Edit', edit_employer_path(employer) %></td>
+    <td><%= link_to 'Destroy', employer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Employer', new_employer_path %>

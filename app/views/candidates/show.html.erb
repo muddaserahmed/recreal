@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Available in:</b>
+  <%= @candidate.available_in %>
+</p>
+
+<p>
+  <b>Contact no:</b>
+  <%= @candidate.contact_no %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @candidate.name %>
+</p>
+
+<p>
+  <b>Salary expectation:</b>
+  <%= @candidate.salary_expectation %>
+</p>
+
+<p>
+  <b>Skype name:</b>
+  <%= @candidate.skype_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>

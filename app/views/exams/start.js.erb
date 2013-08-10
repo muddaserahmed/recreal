@@ -1,0 +1,49 @@
+jQuery(function($) {
+
+ $.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+  $("#question").html("<%= j render ("question") %>");
+
+  $('form').change(function() {
+
+    console.log( $(this).serialize() );
+    var key = $(this).attr("name");
+    var data = $(this).attr("value");
+    $.ajax({
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      url: '/exams/1/answer/<%= @current_que %>',
+      data: $(this).serialize(),
+      dataType: 'html',
+    })
+  });
+
+
+
+  setInterval(function() {
+   // alert("Hello");
+  }, 1000 * 60 * 1);
+
+  // var newDate = new Date(<%= (session[:started_at]+@exam.time_limit.minutes).strftime("%Y, %m-1, %d, %H, %M, %S") %>);
+  // $('#countdown').countdown({
+  //   until: newDate,
+  //   compact: true,
+  //   format: 'HMs',
+  //   description: '',
+  //   onExpiry: function() {
+  //     document.getElementById('next').disable();
+  //     document.getElementById('prev').disable();
+  //     alert('time is up!');
+  //     document.getElementById('finish').click();
+  //   }
+  // });
+
+
+
+});
+
+
