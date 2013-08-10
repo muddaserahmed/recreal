@@ -1,4 +1,5 @@
 
+<div class="row" style="border: thin solid #cccccc; padding: 20px">
 <div class="row">
 <h1 style="background-color: #2BA6CB; color: #FFFFFF; padding: 5px;">Candidates</h1>
 </div>
@@ -9,9 +10,9 @@
 <% @candidates.each do |candidate| %>
 
 <div class "small-2 columns">
-    <div class="thumbnail">
+    <a href="candidate_profile/show/<%= candidate.id %>">
       <img src="<%= candidate.basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
-    </div>
+    </a>
 </div>
 
 <div class="small-8 columns">
@@ -58,3 +59,4 @@
 </div>
 
 <!-- <%= link_to 'New Candidate', new_candidate_path %> -->
+</div>
