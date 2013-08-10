@@ -1,32 +1,39 @@
 
-
-<h1>Candidates</h1>
-
-<table>
-    <thead>
-  <tr>
-    <th>Name</th>
-    <th>Contact no</th>
-    <th>Available in</th>
-    <th width=100>Salary expectation</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
+<div class="row">
+<h1 style="background-color: #2BA6CB; color: #FFFFFF; padding: 5px;">Candidates</h1>
+</div>
 
 
-<tbody>
+
+<div class="row" style "padding: 5px;">   
 <% @candidates.each do |candidate| %>
-  <tr>
-    <td><%= link_to candidate.name, show_profile_path(candidate.id) %></td>
-    <td><%= candidate.contact_no %></td>
-    <td><%= candidate.available_in %> days</td>
-    <td><%= candidate.salary_expectation %></td>
 
+<div class "small-2 columns">
+    <div class="thumbnail">
+      <img src="<%= candidate.basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
+    </div>
+</div>
+
+<div class="small-8 columns">
+    <b><%= link_to candidate.name, show_profile_path(candidate.id) %></b><br />
+<!--     <%= candidate.contact_no %><br />
+    <%= candidate.available_in %> days<br />
+    <%= candidate.salary_expectation %><br /> -->
+    <% candidate.full_profile.positions.each do |p| %>
+              <% if p.is_current?%>
+              <h7 ><%="#{p.title} at #{p.company}"%></h7><br /><br />
+              <%end%>
+      <% end %>
+    <h7 style="color: #919191;"><%="will be available in #{candidate.available_in}" %> days</h7><br />
+
+    
+</div>
+
+<div class="small-2 columns">
+    <div class="right">
     <!--    Skype URI Button  -->
         <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
-        <td id="<%=candidate.created_at%>" >
+        <div id="<%=candidate.created_at%>" >
             <script type="text/javascript">
             Skype.ui({
             "name": "dropdown",
@@ -35,16 +42,19 @@
             "imageSize": 20
             });
             </script>
-        </td>
-</tbody>
+        </div>
+    </div>
+</div>
+<div class="bottom" style="margin-top: 100px;">
+<hr>
+</div>
 
 <!--     <td><%= link_to 'Show', candidate %></td>
     <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
     <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-  </tr>
+  
 <% end %>
-</table>
 
-<br />
+</div>
 
 <!-- <%= link_to 'New Candidate', new_candidate_path %> -->
