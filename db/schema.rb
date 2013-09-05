@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806134430) do
+ActiveRecord::Schema.define(:version => 20130829090128) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                :null => false
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(:version => 20130806134430) do
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "educations", :force => true do |t|
     t.string   "school_name"
     t.string   "field_of_study"
@@ -74,10 +81,9 @@ ActiveRecord::Schema.define(:version => 20130806134430) do
   end
 
   create_table "employers", :force => true do |t|
-    t.string   "company_name"
-    t.string   "website"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "company_id"
   end
 
   create_table "exams", :force => true do |t|
@@ -102,6 +108,26 @@ ActiveRecord::Schema.define(:version => 20130806134430) do
     t.integer  "candidate_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "title"
+    t.string   "location"
+    t.date     "posted_date"
+    t.date     "last_date"
+    t.date     "start_date"
+    t.integer  "industry_id"
+    t.integer  "employee_type_id"
+    t.boolean  "travel_required"
+    t.integer  "salary_range"
+    t.integer  "currency_id"
+    t.integer  "division_id"
+    t.integer  "department_id"
+    t.text     "job_description"
+    t.text     "job_requirements"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "linkedin_oauth_settings", :force => true do |t|

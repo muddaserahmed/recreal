@@ -1,0 +1,107 @@
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: cheq81slu4pe
+
+</script>
+
+
+
+<div class="row">
+  <div class="column large-6">  
+  <script type="IN/Login">
+    Hello, <?js= firstName ?> <?js= lastName ?>.
+  </script>
+  
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company:</b>
+  <%= @job.company_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @job.title %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @job.location %>
+</p>
+
+<p>
+  <b>Posted date:</b>
+  <%= @job.posted_date %>
+</p>
+
+<p>
+  <b>Last date:</b>
+  <%= @job.last_date %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @job.start_date %>
+</p>
+
+<p>
+  <b>Industry:</b>
+  <%= @job.industry_id %>
+</p>
+
+<p>
+  <b>Employee type:</b>
+  <%= @job.employee_type_id %>
+</p>
+
+<p>
+  <b>Travel required:</b>
+  <%= @job.travel_required %>
+</p>
+
+<p>
+  <b>Salary range:</b>
+  <%= @job.salary_range %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @job.currency_id %>
+</p>
+
+<p>
+  <b>Division:</b>
+  <%= @job.division_id %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @job.department_id %>
+</p>
+
+
+</div>  
+  <div class="column large-6">
+  <script type="IN/CompanyProfile" data-id="PTCL" data-format="inline"></script>
+  <!--<script type="IN/CompanyProfile" data-id="1345705" data-format="inline"></script>-->
+  </div>
+</div>
+
+<div class="row">
+
+<p>
+  <b>Job description:</b>
+  <%= @job.job_description %>
+</p>
+
+<p>
+  <b>Job requirements:</b>
+  <%= @job.job_requirements %>
+</p>
+
+</div>
+
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

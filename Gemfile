@@ -19,7 +19,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'compass-rails' # you need this or you get an err
-  gem 'zurb-foundation', '~> 4.0.0'
+  gem 'zurb-foundation', :require => 'zurb-foundation'
   
 
   gem 'uglifier', '>= 1.0.3'

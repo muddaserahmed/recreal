@@ -12,16 +12,29 @@
 
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+  	<title><%= content_for?(:title) ? yield(:title) : "recreal - real-time synergetic hiring" %></title>
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-
-<%= stylesheet_link_tag    "application", :media => "all" %>
-
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    
+    <%= javascript_include_tag "foundation/custom-modernizr.js" %>
+  	<%= javascript_include_tag "vendor/zepto.js" %>
+    <!-- <%= javascript_include_tag "jquery.min.js" %>   -->
+    <!-- <%= javascript_include_tag "vendor/jquery" %>  -->
+    <%= javascript_include_tag 'jquery', "application" %>
+    <%= javascript_include_tag "foundation.min.js" %>
     <%= javascript_include_tag "jquery.countdown.min" %>
+    <%= javascript_include_tag "foundation/foundation.orbit.js" %>
+    <%= javascript_include_tag "foundation/foundation.topbar.js" %>
+    <!-- <%= javascript_include_tag "foundation/foundation.js" %> -->
+    <!-- <%= javascript_include_tag "vendor/custom.modernizr" %> -->
     <%= csrf_meta_tags %>
 
-
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: cheq81slu4pe
+  authorize: true   
+  </script>
+ 
 <!-- 
         <style>
       body {
@@ -31,14 +44,14 @@
      -->
   </head>
 
-  <body>
+  <body style = "background-color: #eeeeee">
 
     <nav class="top-bar">
         <ul class="title-area">
           <li class="name"><h1><a href="/home/index">RecReal </a></h1>
-          </li>  
+          </li>   
               <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="/home/index"><span>Menu</span></a></li>
+     <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 
         </ul>
 
@@ -68,7 +81,6 @@
           </div> 
 
 </nav> 
-
 
 <!-- 
 <nav class="top-bar">
@@ -102,18 +114,41 @@
  -->
 
 
-  <div class="row">
-    <div class="large-12 columns">
+<!--   <div class="row">
+    <div class="large-12 columns"> -->
 
 
     <% if flash[:notice] %>
     <div id="notice"><% flash[:notice] %></div>
     <% end %>
-      
+
     <%= yield %>
-    </div>
-</div>
-    
-    <%= javascript_include_tag 'jquery', "application" %>
+<!--     </div>
+</div> -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>&copy; all Copyrights reserved.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+  </footer>
+
+    <script>
+//   document.write('<script src=/javascripts/vendor/'
+//     + ('__proto__' in {} ? 'zepto' : 'jquery')
+//     + '.js><\/script>');
+// </script>
   </body>
 </html>

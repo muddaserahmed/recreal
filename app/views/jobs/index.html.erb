@@ -1,0 +1,109 @@
+<h1>Listing jobs</h1>
+
+<% @jobs.each do |job| %>
+  
+
+<div style="border: thin solid #cccccc; padding: 20px">
+    <b> <%= link_to job.title, job %></br> </b>
+    <%= job.location %></br>
+    
+    <%= job.company.name %>
+
+
+
+    <script type="IN/CompanyProfile" data-id="1345705" data-format="hover"></script> 
+
+
+
+    <!-- <div style="float: right; width: 300px">
+       <script type="IN/CompanyProfile" data-id="1345705" data-format="hover"></script>
+    </div> -->
+    </br>
+    <%= job.division_id %></br>
+    <%= job.department_id %></br>
+
+    <div style="overflow: hidden; line-height: 1; height :40px">
+    <%= job.job_description %>
+    </div>
+
+</div></br>
+<% end %>
+
+<input class="ui-autocomplete-input typeahead" placeholder="start typing a company name..." autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+
+
+
+<!-- 
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Posted date</th>
+    <th>Last date</th>
+    <th>Start date</th>
+    <th>Industry</th>
+    <th>Employee type</th>
+    <th>Travel required</th>
+    <th>Salary range</th>
+    <th>Currency</th>
+    <th>Division</th>
+    <th>Department</th>
+    <th>Job description</th>
+    <th>Job requirements</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.company_id %></td>
+    <td><%= job.title %></td>
+    <td><%= job.location %></td>
+    <td><%= job.posted_date %></td>
+    <td><%= job.last_date %></td>
+    <td><%= job.start_date %></td>
+    <td><%= job.industry_id %></td>
+    <td><%= job.employee_type_id %></td>
+    <td><%= job.travel_required %></td>
+    <td><%= job.salary_range %></td>
+    <td><%= job.currency_id %></td>
+    <td><%= job.division_id %></td>
+    <td><%= job.department_id %></td>
+    <td><%= job.job_description %></td>
+    <td><%= job.job_requirements %></td>
+    <td><%= link_to 'Show', job %></td>
+    <td><%= link_to 'Edit', edit_job_path(job) %></td>
+    <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<% @jobs.each do |job| %>
+  
+    <%= job.company_id %>
+    <%= job.title %>
+    <%= job.location %>
+    <%= job.posted_date %>
+    <%= job.last_date %>
+    <%= job.start_date %>
+    <%= job.industry_id %>
+    <%= job.employee_type_id %>
+    <%= job.travel_required %>
+    <%= job.salary_range %>
+    <%= job.currency_id %>
+    <%= job.division_id %>
+    <%= job.department_id %>
+    <%= job.job_description %>
+    <%= job.job_requirements %>
+    <%= link_to 'Show', job %>
+    <%= link_to 'Edit', edit_job_path(job) %>
+    <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<br />
+
+<%= link_to 'New Job', new_job_path %>
+ -->

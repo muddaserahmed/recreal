@@ -50,6 +50,8 @@ class LinkedinController < ApplicationController
     end
   end
 
+  
+
   private
 
   def get_client

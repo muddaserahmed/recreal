@@ -59,11 +59,7 @@ before_filter :authenticate_user!
   end
 
   def start
-  
-      
-        
        # redirect_to candidates_path  if session[:try] > 1
-  
     @exam = Exam.find(params[:id])
     # Если параметр номера вопроса отсутствует - назначается 1
     if (!params[:question].present?)

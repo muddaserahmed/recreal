@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company_id: 1
+  title: MyString
+  location: MyString
+  posted_date: 2013-08-29
+  last_date: 2013-08-29
+  start_date: 2013-08-29
+  industry_id: 1
+  employee_type_id: 1
+  travel_required: false
+  salary_range: 1
+  currency_id: 1
+  division_id: 1
+  department_id: 1
+  job_description: MyText
+  job_requirements: MyText
+
+two:
+  company_id: 1
+  title: MyString
+  location: MyString
+  posted_date: 2013-08-29
+  last_date: 2013-08-29
+  start_date: 2013-08-29
+  industry_id: 1
+  employee_type_id: 1
+  travel_required: false
+  salary_range: 1
+  currency_id: 1
+  division_id: 1
+  department_id: 1
+  job_description: MyText
+  job_requirements: MyText

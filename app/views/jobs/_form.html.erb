@@ -1,0 +1,77 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--   <div class="field">
+    <%= f.label :company_id %><br />
+    <%= f.number_field :company_id %>
+  </div> -->
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :posted_date %><br />
+    <%= f.date_select :posted_date %>
+  </div>
+  <div class="field">
+    <%= f.label :last_date %><br />
+    <%= f.date_select :last_date %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :industry_id %><br />
+    <%= f.number_field :industry_id %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_type_id %><br />
+    <%= f.number_field :employee_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :travel_required %><br />
+    <%= f.check_box :travel_required %>
+  </div>
+  <div class="field">
+    <%= f.label :salary_range %><br />
+    <%= f.number_field :salary_range %>
+  </div>
+  <div class="field">
+    <%= f.label :currency_id %><br />
+    <%= f.number_field :currency_id %>
+  </div>
+  <div class="field">
+    <%= f.label :division_id %><br />
+    <%= f.number_field :division_id %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br />
+    <%= f.number_field :department_id %>
+  </div>
+  <div class="field">
+    <%= f.label :job_description %><br />
+    <%= f.text_area :job_description %>
+  </div>
+  <div class="field">
+    <%= f.label :job_requirements %><br />
+    <%= f.text_area :job_requirements %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

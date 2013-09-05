@@ -42,10 +42,15 @@ class EmployersController < ApplicationController
   def create
  @employer = Employer.new(params[:employer])
     @user = User.new(params[:user])
+    # @company = Company.new(params[:company])
+    # @employer.company = @company
+
     @user.profileable = @employer
+
 
       if @employer.save
         if  @user.save
+          # @company.save
             redirect_to candidates_url
         end
       end

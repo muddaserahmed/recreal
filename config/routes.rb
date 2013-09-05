@@ -1,4 +1,12 @@
 Recreal::Application.routes.draw do
+  resources :jobs
+
+
+  resources :companies
+
+
+  get "companys_controller/index"
+
   get "candidate_profile/index"
 
   resources :employers
@@ -6,10 +14,11 @@ Recreal::Application.routes.draw do
 
   resources :candidates
 
-
   devise_for :users
 
   get "home/index"
+  get "home/test"
+  get "home/test_again"
 
   match "/candidate_profile/show/:id" => "candidate_profile#show", :as => 'show_profile'
 

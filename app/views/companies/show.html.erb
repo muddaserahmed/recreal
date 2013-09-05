@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+  <div class="column large-5">  
+  <script type="IN/Login">
+    Hello, <?js= firstName ?> <?js= lastName ?>.
+  </script>
+  </div>  
+  <div class="column large-5">
+  <!-- <script type="IN/CompanyProfile" data-id="PTCL" data-format="inline"></script> -->
+  <script type="IN/CompanyProfile" data-id="1345705" data-format="inline"></script>
+  </div>
+</div>
+
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @company.website %>
+</p>
+
+<h3> Open Jobs </h3>
+
+<% Job.where(:company_id => current_user.profileable.company.id).each do |job| %>
+ 
+    
+    <b><%= job.title %></b> </br>
+    Closing on : 
+    <%= job.last_date %>
+    
+    <%= link_to 'Show', job %>
+    <%= link_to 'Edit', edit_job_path(job) %>
+    <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> </br></br>
+
+<% end %>
+
+
+</br></br></br>
+<h4>
+<%= link_to 'Post a new job',new_job_path %> 
+</h4>
+</ br>
+
+|<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
