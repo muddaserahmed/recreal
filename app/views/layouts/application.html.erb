@@ -25,6 +25,7 @@
     <%= javascript_include_tag "foundation.min.js" %>
     <%= javascript_include_tag "jquery.countdown.min" %>
     <%= javascript_include_tag "foundation/foundation.orbit.js" %>
+    <%= javascript_include_tag "foundation/foundation.reveal.js" %>
     <%= javascript_include_tag "foundation/foundation.topbar.js" %>
     <!-- <%= javascript_include_tag "foundation/foundation.js" %> -->
     <!-- <%= javascript_include_tag "vendor/custom.modernizr" %> -->
@@ -46,85 +47,25 @@
 
   <body style = "background-color: #eeeeee">
 
-    <nav class="top-bar">
-        <ul class="title-area">
-          <li class="name"><h1><a href="/home/index">RecReal </a></h1>
-          </li>   
-              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-     <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-
-        </ul>
 
 
-         <section class="top-bar-section">  
-        
-          <ul class="left">
-            <li class="divider"></li>
-            <li class="active"><a href="/exams/1/">Wanna take a quick Test?</a></li>
-            <li class="divider"></li>
-          </ul>
-         
-          
-          <ul class="left">
-            <li class="divider"></li>
-            <li class="active"><a href="/rAdmin">Admin Panel</a></li>
-            <li class="divider"></li>
-          </ul>
-         </section>
 
-            <div style="color: #999; display:block;float: right; padding:10px 20px 10px;" class="nav">
-            <% if user_signed_in? %>
-              You are logged in as <%= current_user.email %> (<%= link_to "Log out", destroy_user_session_path %>)
-            <% else %>
-              <%= link_to 'Log in', new_user_session_path if !user_signed_in? %>
-            <% end %>
-          </div> 
 
-</nav> 
 
-<!-- 
-<nav class="top-bar">
-  <ul class="title-area">
+
     
-    <li class="name">
-      <h1><a href="#">Top Bar Title </a></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="/home/index"><span>Menu</span></a>
-
-
-
-
-
-    </li>
-  </ul>
-
-  <section class="top-bar-section">
-   
-    <ul class="left">
-      <li class="divider"></li>
-      <li class="active"><a href="#">Main Item 1</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Main Item 2</a></li>
-      <li class="divider"></li>
-      
-
-    </ul>
-  </section>
-</nav>
- -->
-
-
-<!--   <div class="row">
-    <div class="large-12 columns"> -->
-
+ <% if !current_user.nil? %>
+   <%= render :partial => 'layouts/navbar' %>
+   <% end %>
 
     <% if flash[:notice] %>
     <div id="notice"><% flash[:notice] %></div>
     <% end %>
 
+
     <%= yield %>
-<!--     </div>
-</div> -->
+
+
 
   <footer class="row">
     <div class="large-12 columns">
@@ -135,10 +76,10 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Contact Us</a></li>
           </ul>
         </div>
       </div>

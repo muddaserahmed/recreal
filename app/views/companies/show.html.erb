@@ -1,3 +1,4 @@
+<div class="row">
 <p id="notice"><%= notice %></p>
 
 
@@ -35,7 +36,84 @@
     
     <%= link_to 'Show', job %>
     <%= link_to 'Edit', edit_job_path(job) %>
-    <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> </br></br>
+    <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> 
+<!-- 
+     <% job.job_applications.each do |app| %>
+
+    <br />
+
+    <b><%= link_to app.candidate.name, show_profile_path(app.candidate.id) %></b> 
+
+    </br></br>
+    <% end %>  -->
+
+
+
+
+
+
+
+
+<div class="row" style "padding: 5px;">   
+<% job.job_applications.each do |app| %>
+
+<div class "small-2 columns">
+    <a href="candidate_profile/show/<%= app.candidate.id %>">
+        <%if !app.candidate.basic_profile.picture_url.nil?%>
+      <img src="<%= app.candidate.basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
+      <%end%>
+    </a>
+</div>
+
+<div class="small-8 columns">
+    <b><%= link_to app.candidate.name, show_profile_path(app.candidate.id) %></b><br />
+<!--     <%= app.candidate.contact_no %><br />
+    <%= app.candidate.available_in %> days<br />
+    <%= app.candidate.salary_expectation %><br /> -->
+    <% app.candidate.full_profile.positions.each do |p| %>
+              <% if p.is_current?%>
+              <h7 ><%="#{p.title} at #{p.company}"%></h7><br /><br />
+              <%end%>
+      <% end %>
+    <h7 style="color: #919191;"><%="will be available in #{app.candidate.available_in}" %> days</h7><br />
+
+    
+</div>
+
+<div class="small-2 columns">
+    <div class="right">
+    <!--    Skype URI Button  -->
+        <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+        <div id="<%=app.candidate.created_at%>" >
+            <script type="text/javascript">
+            Skype.ui({
+            "name": "dropdown",
+            "element": "<%=app.candidate.created_at%>",
+            "participants": ["<%=app.candidate.skype_name%>"],
+            "imageSize": 20
+            });
+            </script>
+        </div>
+    </div>
+</div>
+<div class="bottom" style="margin-top: 120px;">
+<hr>
+</div>
+
+  
+<% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <% end %>
 
@@ -48,3 +126,5 @@
 
 |<%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+</div>

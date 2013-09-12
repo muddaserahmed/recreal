@@ -1,9 +1,10 @@
+
 <h1>Listing jobs</h1>
 
 <% @jobs.each do |job| %>
   
 
-<div style="border: thin solid #cccccc; padding: 20px">
+<div style="border: thin solid #cccccc; padding: 20px; background-color: #ffffff">
     <b> <%= link_to job.title, job %></br> </b>
     <%= job.location %></br>
     
@@ -19,12 +20,14 @@
        <script type="IN/CompanyProfile" data-id="1345705" data-format="hover"></script>
     </div> -->
     </br>
-    <%= job.division_id %></br>
-    <%= job.department_id %></br>
+    <%= job.industry.name %></br>
+    <!-- <%= job.department_id %></br> -->
 
     <div style="overflow: hidden; line-height: 1; height :40px">
     <%= job.job_description %>
     </div>
+
+    <%= link_to "Apply", job_applications_path(:job_id => job.id), :method => :post %>
 
 </div></br>
 <% end %>

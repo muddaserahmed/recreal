@@ -9,7 +9,7 @@
     version: '4.2.0',
 
     settings: {
-      timer_speed: 10000,
+      timer_speed: 15000,
       pause_on_hover: true,
       resume_on_mouseout: false,
       animation_speed: 500,

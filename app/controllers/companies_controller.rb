@@ -48,7 +48,8 @@ class CompaniesController < ApplicationController
       if @company.save
         if  @user.save
             @employer.save
-            redirect_to candidates_url
+            # redirect_to candidates_url
+
         end
       end
   end

@@ -1,3 +1,5 @@
+
+
 <%= form_for(@job) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -15,63 +17,97 @@
     <%= f.label :company_id %><br />
     <%= f.number_field :company_id %>
   </div> -->
-  <div class="field">
-    <%= f.label :title %><br />
+  <div class="large-6 columns">
+    <%= f.label :title,  class: "label radius", title: "Job Title", data: {tooltip: true } %>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :location %><br />
+ 
+    <div class="large-6 columns">
+    <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
-  <div class="field">
-    <%= f.label :posted_date %><br />
+
+
+
+
+  
+    <div class="large-3 columns">
+    <%= f.label :posted_date %> 
     <%= f.date_select :posted_date %>
   </div>
-  <div class="field">
-    <%= f.label :last_date %><br />
+
+ 
+    <div class="large-3 columns">
+    <%= f.label :last_date %> 
     <%= f.date_select :last_date %>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br />
+ 
+  
+    <div class="large-3 columns">
+    <%= f.label :start_date %> 
     <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :industry_id %><br />
-    <%= f.number_field :industry_id %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_type_id %><br />
-    <%= f.number_field :employee_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :travel_required %><br />
+</div>
+
+
+    <div class="large-4 columns">
+    <%= f.label :travel_required %> 
     <%= f.check_box :travel_required %>
   </div>
-  <div class="field">
-    <%= f.label :salary_range %><br />
+
+<div class="large-4 columns">
+  <%= f.label(:industry, "industry", :class => "control-label") %>
+  <div class="controls">
+    <%= f.select(:industry_id, Industry.all.map { |i| [i.name, i.id] }, :prompt => "Select an Industry", :rows => 1, :style => "width:100%; max-width:100%;") %>
+  </div>
+  </div>
+
+
+    <div class="large-3 columns">
+    <%= f.label :employee_type_id %> 
+    <%= f.number_field :employee_type_id %>
+  </div>
+
+
+
+
+    <div class="large-3 columns" style="padding: 10px">
+    <%= f.label :salary_range %> 
     <%= f.number_field :salary_range %>
   </div>
-  <div class="field">
-    <%= f.label :currency_id %><br />
+
+
+    <div class="large-3 columns">
+    <%= f.label :currency_id %> 
     <%= f.number_field :currency_id %>
   </div>
-  <div class="field">
-    <%= f.label :division_id %><br />
+
+    <div class="large-3 columns">
+    <%= f.label :division_id %> 
     <%= f.number_field :division_id %>
   </div>
-  <div class="field">
-    <%= f.label :department_id %><br />
+
+
+    <div class="large-3 columns">
+    <%= f.label :department_id %> 
     <%= f.number_field :department_id %>
   </div>
-  <div class="field">
-    <%= f.label :job_description %><br />
+
+
+
+
+    <div class="large-12 columns">
+    <%= f.label :job_description %> 
     <%= f.text_area :job_description %>
   </div>
-  <div class="field">
-    <%= f.label :job_requirements %><br />
+
+    <div class="large-12 columns">
+    <%= f.label :job_requirements %> 
     <%= f.text_area :job_requirements %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <div class="large-3 columns">
+    <%= f.submit "Create Job", :class => "button radius" %>
+  </div>
   </div>
 <% end %>

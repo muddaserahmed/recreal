@@ -1,6 +1,7 @@
 Recreal::Application.routes.draw do
   resources :jobs
 
+resources :job_applications
 
   resources :companies
 

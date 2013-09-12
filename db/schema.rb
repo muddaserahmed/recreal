@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829090128) do
+ActiveRecord::Schema.define(:version => 20130912083910) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                :null => false
@@ -109,6 +109,26 @@ ActiveRecord::Schema.define(:version => 20130829090128) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "industries", :force => true do |t|
+    t.string   "group"
+    t.string   "name"
+    t.integer  "linkedin_code"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "job_applications", :force => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "job_id"
+    t.integer  "score"
+    t.boolean  "interested_employer"
+    t.boolean  "taken_exam"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "job_applications", ["candidate_id", "job_id"], :name => "index_job_applications_on_candidate_id_and_job_id"
 
   create_table "jobs", :force => true do |t|
     t.integer  "company_id"
