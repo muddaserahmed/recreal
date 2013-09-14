@@ -26,7 +26,6 @@ group :assets do
 end
 
 
-group :production do
 
 gem 'jquery-rails'
 gem 'devise'
@@ -34,7 +33,6 @@ gem 'nifty-generators'
 gem 'linkedin'
 gem 'rails_admin'
 
-end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

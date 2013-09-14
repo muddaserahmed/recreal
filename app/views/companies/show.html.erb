@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="row">
+<!-- <div class="row">
   <div class="column large-5">  
   <script type="IN/Login">
     Hello, <?js= firstName ?> <?js= lastName ?>.
@@ -10,9 +10,9 @@
   </div>  
   <div class="column large-5">
   <!-- <script type="IN/CompanyProfile" data-id="PTCL" data-format="inline"></script> -->
-  <script type="IN/CompanyProfile" data-id="1345705" data-format="inline"></script>
+  <!-- <script type="IN/CompanyProfile" data-id="1345705" data-format="inline"></script>
   </div>
-</div>
+</div> -->
 
 
 <p>
@@ -29,8 +29,8 @@
 
 <% Job.where(:company_id => current_user.profileable.company.id).each do |job| %>
  
-    
-    <b><%= job.title %></b> </br>
+  <div style="padding: 5px; border: thin solid #cccccc;">
+    <b><%= link_to job.title, job %></b></br>
     Closing on : 
     <%= job.last_date %>
     
@@ -54,11 +54,11 @@
 
 
 
-<div class="row" style "padding: 5px;">   
+<div class="row" style="padding: 5px; ">   
 <% job.job_applications.each do |app| %>
 
 <div class "small-2 columns">
-    <a href="candidate_profile/show/<%= app.candidate.id %>">
+    <a href="/candidate_profile/show/<%= app.candidate.id %>">
         <%if !app.candidate.basic_profile.picture_url.nil?%>
       <img src="<%= app.candidate.basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
       <%end%>
@@ -79,10 +79,11 @@
 
     
 </div>
-
+<!-- 
 <div class="small-2 columns">
     <div class="right">
-    <!--    Skype URI Button  -->
+      hello this is skype lorem ipsum gibbrish
+      Skype URI Button  
         <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
         <div id="<%=app.candidate.created_at%>" >
             <script type="text/javascript">
@@ -90,20 +91,22 @@
             "name": "dropdown",
             "element": "<%=app.candidate.created_at%>",
             "participants": ["<%=app.candidate.skype_name%>"],
-            "imageSize": 20
+            "imageSize": 45
             });
             </script>
         </div>
     </div>
-</div>
-<div class="bottom" style="margin-top: 120px;">
-<hr>
-</div>
+</div> -->
 
-  
+</div>  
+<!-- <div class="bottom" style="margin-top: 120px;">
+<hr>
+</div> -->
+
+</div>
 <% end %>
 
-</div>
+
 
 
 

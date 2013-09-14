@@ -76,6 +76,8 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.destroy
 
+  flash[:notice] = "company deleted"    
+
     respond_to do |format|
       format.html { redirect_to companies_url }
       format.json { head :no_content }
