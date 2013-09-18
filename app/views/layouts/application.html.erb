@@ -19,14 +19,18 @@
     
     <%= javascript_include_tag "foundation/custom-modernizr.js" %>
   	<%= javascript_include_tag "vendor/zepto.js" %>
-    <!-- <%= javascript_include_tag "jquery.min.js" %>   -->
-    <!-- <%= javascript_include_tag "vendor/jquery" %>  -->
-    <%= javascript_include_tag 'jquery', "application" %>
+      <%= javascript_include_tag "jquery.min.js" %>  
+    <!-- <%= javascript_include_tag "vendor/jquery" %> -->
+     <%= javascript_include_tag 'jquery', "application" %> 
     <%= javascript_include_tag "foundation.min.js" %>
-    <%= javascript_include_tag "jquery.countdown.min" %>
+     <%= javascript_include_tag "jquery.countdown.min" %> 
     <%= javascript_include_tag "foundation/foundation.orbit.js" %>
     <%= javascript_include_tag "foundation/foundation.reveal.js" %>
     <%= javascript_include_tag "foundation/foundation.topbar.js" %>
+ 
+  <%= stylesheet_link_tag "tagsinput.css" , :media => 'application' %>
+  <%= javascript_include_tag "tagsinput.js" , :media=>'application' %>
+    <!-- <%= javascript_include_tag "prototype" %> -->
     <!-- <%= javascript_include_tag "foundation/foundation.js" %> -->
     <!-- <%= javascript_include_tag "vendor/custom.modernizr" %> -->
     <%= csrf_meta_tags %>

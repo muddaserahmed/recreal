@@ -8,12 +8,12 @@ class CreateJobs < ActiveRecord::Migration
       t.date :last_date
       t.date :start_date
       t.integer :industry_id
-      t.integer :employee_type_id
+      t.integer :emp_type_id
       t.boolean :travel_required
-      t.integer :salary_range
+      t.integer :salary_range_id
       t.integer :currency_id
       t.integer :division_id
-      t.integer :department_id
+      t.integer :dept_id
       t.text :job_description
       t.text :job_requirements
 

@@ -50,7 +50,7 @@
 
 <p>
   <b>Employee type:</b>
-  <%= @job.employee_type_id %>
+  <%= @job.emp_type.name %>
 </p>
 
 <p>
@@ -60,7 +60,7 @@
 
 <p>
   <b>Salary range:</b>
-  <%= @job.salary_range %>
+  <%= @job.salary_range.name %>
 </p>
 
 <p>
@@ -70,13 +70,20 @@
 
 <p>
   <b>Division:</b>
-  <%= @job.division_id %>
+  <%= @job.division.name %>
 </p>
 
 <p>
   <b>Department:</b>
-  <%= @job.department_id %>
+  <%= @job.dept.name %>
 </p>
+
+
+
+<b>Skills</b>
+<% for skill in @job.skills %>
+  <li> <%=h skill.name %> </li>
+<% end %>
 
 
 </div>  

@@ -28,19 +28,19 @@ jQuery(function($) {
    // alert("Hello");
   }, 1000 * 60 * 1);
 
-  // var newDate = new Date(<%= (session[:started_at]+@exam.time_limit.minutes).strftime("%Y, %m-1, %d, %H, %M, %S") %>);
-  // $('#countdown').countdown({
-  //   until: newDate,
-  //   compact: true,
-  //   format: 'HMs',
-  //   description: '',
-  //   onExpiry: function() {
-  //     document.getElementById('next').disable();
-  //     document.getElementById('prev').disable();
-  //     alert('time is up!');
-  //     document.getElementById('finish').click();
-  //   }
-  // });
+  var newDate = new Date(<%= (session[:started_at]+@exam.time_limit.minutes).strftime("%Y, %m-1, %d, %H, %M, %S") %>);
+  $('#countdown').countdown({
+    until: newDate,
+    compact: true,
+    format: 'HMs',
+    description: '',
+    onExpiry: function() {
+      document.getElementById('next').disable();
+      document.getElementById('prev').disable();
+      alert('time is up!');
+      document.getElementById('finish').click();
+    }
+  });
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912083910) do
+ActiveRecord::Schema.define(:version => 20130916065243) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                :null => false
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(:version => 20130912083910) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "depts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "divisions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "educations", :force => true do |t|
     t.string   "school_name"
     t.string   "field_of_study"
@@ -78,6 +90,12 @@ ActiveRecord::Schema.define(:version => 20130912083910) do
     t.integer  "full_profile_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "emp_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "employers", :force => true do |t|
@@ -138,16 +156,16 @@ ActiveRecord::Schema.define(:version => 20130912083910) do
     t.date     "last_date"
     t.date     "start_date"
     t.integer  "industry_id"
-    t.integer  "employee_type_id"
     t.boolean  "travel_required"
-    t.integer  "salary_range"
     t.integer  "currency_id"
     t.integer  "division_id"
-    t.integer  "department_id"
     t.text     "job_description"
     t.text     "job_requirements"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "emp_type_id"
+    t.integer  "salary_range_id"
+    t.integer  "dept_id"
   end
 
   create_table "linkedin_oauth_settings", :force => true do |t|
@@ -203,6 +221,13 @@ ActiveRecord::Schema.define(:version => 20130912083910) do
   add_index "results", ["user_id"], :name => "index_results_on_user_id"
   add_index "results", ["weight"], :name => "index_results_on_weight"
 
+  create_table "salary_ranges", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sections", :force => true do |t|
     t.integer  "exam_id",    :null => false
     t.string   "title",      :null => false
@@ -211,6 +236,13 @@ ActiveRecord::Schema.define(:version => 20130912083910) do
   end
 
   add_index "sections", ["exam_id"], :name => "index_sections_on_exam_id"
+
+  create_table "skills", :force => true do |t|
+    t.string   "name"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "types", :force => true do |t|
     t.string   "title",      :null => false
