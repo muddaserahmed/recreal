@@ -180,8 +180,6 @@ Devise.setup do |config|
   # change their passwords.
   config.reset_password_within = 6.hours
 
-  config.secret_key = '533be777e9746ffbd4ad12b513ea929302faff254c4c71925c1160dc9
-519d5049e8a764574b3ffff04939faac43e76991e6681d4c634be168522d994e1c1a753'
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
