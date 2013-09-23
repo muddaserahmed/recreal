@@ -27,8 +27,11 @@
     <%= job.job_description %>
     </div>
 
-    <%= link_to "Apply", job_applications_path(:job_id => job.id), :method => :post %>
 
+<% if current_user.profileable.job_applications.include?(JobApplication.where(:job_id => job.id).first) %>
+Applied <%else%>
+    <%= link_to "Apply", job_applications_path(:job_id => job.id), :method => :post %>
+<%end%>
 </div></br>
 <% end %>
 
