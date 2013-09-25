@@ -25,7 +25,7 @@ class JobsController < ApplicationController
   # GET /jobs/new.json
   def new
     @job = Job.new
-    3.times {@job.skills.build}
+    # 3.times {@job.skills.build}
 
     respond_to do |format|
       format.html # new.html.erb

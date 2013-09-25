@@ -120,13 +120,17 @@
   </div>
 
 
+
 <div class="large-6 columns" id="skillset">
 <h2>Skills</h2>
 <%= f.fields_for :skills do |skill| %>
   <%= render 'nested_skills', :f => skill %>
 <% end %>
+
+<div class="large-6 columns">
 <%= link_to_add_association 'Add Skill', f, :skills, 
               :partial => 'nested_skills' , :render_options => { :wrapper => 'inline' }%>
+</div>
 </div>
 
 <script language="JavaScript">
