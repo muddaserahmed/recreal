@@ -18,6 +18,6 @@
 
 $(function() {
     $(document).foundation();
-    $(document).foundationTopBar() 
+    // $(document).foundationTopBar(); 
 });
 
