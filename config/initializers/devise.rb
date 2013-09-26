@@ -231,9 +231,9 @@ Devise.setup do |config|
 
 
 
-# config.secret_key = '454dcfb0c40a
-# f2440f61dea7601c3a0760cbb765d17c33b54b55a456cd59d55d2fd97f2beccd378ba66e6865b49d
-# 1f2b3169f09c42d41b92dac3f7d3385ffb9c'
+config.secret_key = '454dcfb0c40a
+f2440f61dea7601c3a0760cbb765d17c33b54b55a456cd59d55d2fd97f2beccd378ba66e6865b49d
+1f2b3169f09c42d41b92dac3f7d3385ffb9c'
 
 
 
