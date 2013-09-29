@@ -34,52 +34,46 @@ margin-top: 8px;
     <%= f.label :company_id %><br />
     <%= f.number_field :company_id %>
   </div> -->
+  <div class="row">
   <div class="large-6 columns">
     <%= f.label :title,  class: "label radius", title: "Job Title", data: {tooltip: false } %>
     <%= f.text_field :title %>
-  </div>
- 
-    <div class="large-6 columns">
+
     <%= f.label :location,class:"label radius",title:"location",data:{tooltip:false}%>
     <%= f.text_field :location %>
   </div>
+  </div>
 
 
 
 
-  
+  <div class="row">
     <div class="large-3 columns">
     <%= f.label :posted_date ,class:"label radius",title:"posted_date",data:{tooltip:false}%>
-    <%= f.date_select :posted_date %>
-  </div>
+    <%= f.date_select :posted_date %></br></br>
 
- 
-    <div class="large-3 columns">
     <%= f.label :last_date  ,class:"label radius",title:
     "last_date",data:{tooltip:false}%>
-    <%= f.date_select :last_date %>
-  </div>
- 
-  
-    <div class="large-3 columns">
+    <%= f.date_select :last_date %></br></br>
+
     <%= f.label :start_date ,class:"label radius",title:
     "start_date",data:{tooltip:false}%>
-    <%= f.date_select :start_date %>
-</div>
-
-
-    <div class="large-4 columns">
-    <%= f.label :travel_required %> 
-    <%= f.check_box :travel_required %>
+    <%= f.date_select :start_date %></br></br>
+    </div>
   </div>
 
-<div class="large-4 columns">
 
-  <%= f.label(:industry, " ", :class => "control-label") %>
+<div class="row">
+    <div class="large-4 columns">
+    <%= f.label :travel_required ,class:"label radius",title:"travel_required",data:{tooltip:false} %> 
+    <%= f.check_box :travel_required %></br></br>
+
+
+  <%= f.label(:industry ,class:"label radius",title:"industry",data:{tooltip:false}) %>
   <div class="controls">
     <%= f.select(:industry_id, Industry.all.map { |i| [i.name, i.id] }, :prompt => "Select an Industry", :rows => 1, :style => "width:100%; max-width:100%;") %>
-  </div>
-  </div>
+  </div></br>
+
 
 
 <!--     <div class="large-3 columns">
@@ -87,12 +81,12 @@ margin-top: 8px;
     <%= f.number_field :emp_type_id %>
   </div> -->
 
-  <div class="large-4 columns">
-  <%= f.label(:emp_type, "Employee type", :class => "control-label") %>
+
+  <%= f.label(:emp_type, "Employee type",class:"label radius",title:"emp_type",data:{tooltip:false}) %>
   <div class="controls">
-    <%= f.select(:emp_type_id, EmpType.all.map { |i| [i.name, i.id] }, :prompt => "Select Employee type", :rows => 1, :style => "width:100%; max-width:100%;") %>
+    <%= f.select(:emp_type_id, EmpType.all.map { |i| [i.name, i.id] }, :prompt => "Select Employee type", :rows => 1, :style => "width:100%; max-width:100%;") %></br></br>
   </div>
-  </div>
+
 
 
 
@@ -102,12 +96,11 @@ margin-top: 8px;
     <%= f.number_field :salary_range_id %>
   </div> -->
 
-   <div class="large-4 columns">
-  <%= f.label(:salary_range, "Salary Range", :class => "control-label") %>
+  <%= f.label(:salary_range,class:"label radius",title:"salary_range",data:{tooltip:false}) %>
   <div class="controls">
-    <%= f.select(:salary_range_id, SalaryRange.all.map { |i| [i.name, i.id] }, :prompt => "Select a Salary Range", :rows => 1, :style => "width:100%; max-width:100%;") %>
+    <%= f.select(:salary_range_id, SalaryRange.all.map { |i| [i.name, i.id] }, :prompt => "Select a Salary Range", :rows => 1, :style => "width:100%; max-width:100%;") %></br></br>
   </div>
-  </div> 
+
 
 
 <!--     <div class="large-3 columns">
@@ -121,12 +114,12 @@ margin-top: 8px;
     <%= f.number_field :division_id %>
   </div> -->
 
-      <div class="large-4 columns">
-  <%= f.label(:division, "Division", :class => "control-label") %>
+
+  <%= f.label(:division, "Division",class:"label radius",title:"division",data:{tooltip:false}) %>
   <div class="controls">
-    <%= f.select(:division_id, Division.all.map { |i| [i.name, i.id] }, :prompt => "Select a Division", :rows => 1, :style => "width:100%; max-width:100%;") %>
+    <%= f.select(:division_id, Division.all.map { |i| [i.name, i.id] }, :prompt => "Select a Division", :rows => 1, :style => "width:100%; max-width:100%;") %></br></br>
   </div>
-  </div>
+
 
 
 <!--    <div class="large-3 columns">
@@ -134,12 +127,14 @@ margin-top: 8px;
     <%= f.number_field :dept_id %>
   </div>
  -->
-    <div class="large-4 columns">
-  <%= f.label(:dept, "Department", :class => "control-label") %>
+
+  <%= f.label(:dept, "Department",class:"label radius",title:"dept",data:{tooltip:false}) %>
   <div class="controls">
-    <%= f.select(:dept_id, Dept.all.map { |i| [i.name, i.id] }, :prompt => "Select a Department", :rows => 1, :style => "width:100%; max-width:100%;") %>
+    <%= f.select(:dept_id, Dept.all.map { |i| [i.name, i.id] }, :prompt => "Select a Department", :rows => 1, :style => "width:100%; max-width:100%;") %></br>
   </div>
   </div>
+
+</div>
 
 
 <div class="large-12 columns" id="skills_group">
@@ -180,13 +175,13 @@ margin-top: 8px;
 </div> -->
 
 
-    <div class="large-12 columns">
-    <%= f.label :job_description, "Job Description" %> 
+    <div class="large-12 columns"></br>
+    <%= f.label :job_description, class:"label radius",title:"job_description ",data:{tooltip:false} %> 
     <%= f.text_area :job_description %>
   </div>
 
     <div class="large-12 columns">
-    <%= f.label :job_requirements %> 
+    <%= f.label :job_requirements ,class:"label radius",title:"job_requirements",data:{tooltip:false} %> 
     <%= f.text_area :job_requirements %>
   </div>
 
