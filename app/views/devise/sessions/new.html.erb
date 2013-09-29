@@ -1,70 +1,75 @@
 
 
-<div class = "row" >
-	<div class="large-3 columns">
-      <h1><img src="/images/logo.png" /></h1>
+	<div class = "row" >
+		<div class="large-3 columns">
+	      <h1><img src="/images/logo.png" /></h1>
+		</div>
+		<div class="large-6 columns right">
+		
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+				<div class="row"> 
+					<div class="large-5 columns">
+
+						<%= f.label :email %>
+						<%= f.email_field :email, :autofocus => true%>
+						<% if devise_mapping.rememberable? -%>
+			    		<%= f.check_box :remember_me  %> Remember me
+			  			<% end -%>
+					</div>
+					<div class="large-5 columns">
+						<%= f.label :password %>
+						<%= f.password_field :password  %>
+						<%= render "devise/shared/links" %>
+					</div>
+					<div class="large-2 columns" style="padding: 0.25% 0 0 0">
+						</br><%= f.submit "Sign in", :class => "button small" %>
+					</div>
+				</div>
+				<% end %>
+		</div>
 	</div>
-	<div class="large-6 columns right">
-	
-			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-			<div class="row"> 
-				<div class="large-5 columns">
 
-					<%= f.label :email %>
-					<%= f.email_field :email, :autofocus => true%>
-					<% if devise_mapping.rememberable? -%>
-		    		<%= f.check_box :remember_me  %> Remember me
-		  			<% end -%>
-				</div>
-				<div class="large-5 columns">
-					<%= f.label :password %>
-					<%= f.password_field :password  %>
-					<%= render "devise/shared/links" %>
-				</div>
-				<div class="large-2 columns" style="padding: 5% 0 0 0">
-					<%= f.submit "Sign in", :class => "button small" %>
-				</div>
-			</div>
-			<% end %>
+
+
+
+
+
+
+
+
+	<ul data-orbit style="background-color: #576999">
+	  <li>
+
+	    <center>
+	    	<img src="/images/s1.png" />
+	    </center>
+	    <div class="orbit-caption" >Hiring Collaboration</div>
+	  </li>
+	  <li>
+	    <center><img src="/images/s2.png" /></center>
+	    <div class="orbit-caption">Synergetic Hiring</div>
+	  </li>
+	  <li>
+	    <center><img src="/images/s3.png" /></center>
+	    <div class="orbit-caption">The perfect employee is just a click away</div>
+	  </li>
+	</ul>
+
+
+	<div class = "row">
+				<button class="button medium" data-reveal-id="myModal" data-reveal-ajax= "/companies/new">
+	    		Sign Up to HIRE
+				</button>
+
+				<button class="button medium" data-reveal-id="myModal" data-reveal-ajax= "/candidates/new">
+	    		Sign Up to WORK
+				</button>
 	</div>
-</div>
 
+	<div id="myModal" class="reveal-modal">
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>
 
-
-
-
-
-
-<ul data-orbit style="background-color: #576999">
-  <li>
-
-    <center>
-    	<img src="/images/s1.png" />
-    </center>
-    <div class="orbit-caption" >Hiring Collaboration</div>
-  </li>
-  <li>
-    <center><img src="/images/s2.png" /></center>
-    <div class="orbit-caption">Synergetic Hiring</div>
-  </li>
-  <li>
-    <center><img src="/images/s3.png" /></center>
-    <div class="orbit-caption">The perfect employee is just a click away</div>
-  </li>
-</ul>
-
-
-<div class = "row">
-			<button class="button medium" data-reveal-id="myModal" data-reveal-ajax= "/companies/new">
-    		Sign Up to HIRE
-			</button>
-
-			<button class="button medium" data-reveal-id="myModal" data-reveal-ajax= "/candidates/new">
-    		Sign Up to WORK
-			</button>
-</div>
-
-<div id="myModal" class="reveal-modal">
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+	</div>

@@ -52,7 +52,8 @@ class CompaniesController < ApplicationController
       if @company.save
         if  @user.save
             @employer.save
-            # redirect_to candidates_url
+            sign_in(:user, @user)
+            redirect_to root_path
 
         end
       end

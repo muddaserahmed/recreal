@@ -47,6 +47,7 @@ class CandidatesController < ApplicationController
     
       if @candidate.save
          if @user.save
+           sign_in(:user, @user)
            redirect_to linkedin_index_url
          end
       end

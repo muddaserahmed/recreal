@@ -15,22 +15,33 @@
 <div class="large-6 columns">
 <%=   fields_for :user do |user_fields| %>
 <%=   user_fields.label :email %>
-<%=   user_fields.text_field :email %><br />
+<%=   user_fields.text_field :email %>
 <%=   user_fields.label :password %>
-<%=   user_fields.text_field :password %><br />
+<%=   user_fields.text_field :password %>
 <%=   user_fields.label :password_confirmation %>
-<%=   user_fields.text_field :password_confirmation %><br />
+<%=   user_fields.text_field :password_confirmation %>
 <%end%>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :website %><br />
     <%= f.text_field :website %>
+  </div> -->
+
+  <div class="row collapse">
+    <div class="small-3 large-2 columns">
+      <span class="prefix">http://</span>
+    </div>
+    <div class="small-9 large-10 columns">
+      <!-- <input type="text" placeholder="Enter your URL..."> -->
+      <%= f.text_field :website, :placeholder => "Company Website..."  %>
+    </div>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Job", :class => "button radius" %>
   </div>
 <% end %>

@@ -1,0 +1,36 @@
+<%= form_for(@job_application) do |f| %>
+  <% if @job_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_application.errors.count, "error") %> prohibited this job_application from being saved:</h2>
+
+      <ul>
+      <% @job_application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Customized code for polymorphic user -->
+<div class="large-6 columns">
+<%=   fields_for :job_application do |job_fields| %>
+<%=   job_fields.label :email %>
+<%=   job_fields.text_field :email %><br />
+<%=   job_fields.label :password %>
+<%=   job_fields.text_field :password %><br />
+<%=   user_fields.label :password_confirmation %>
+<%=   user_fields.text_field :password_confirmation %><br />
+<%end%>
+<!-- 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

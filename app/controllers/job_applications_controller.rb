@@ -1,5 +1,17 @@
 class JobApplicationsController < ApplicationController
 
+
+  # GET /companies/new
+  # GET /companies/new.json
+  def new
+    @job_application = JobApplication.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @job_application }
+    end
+  end
+
 	def create
 
 		@job_application = current_user.profileable.job_applications.build(:job_id => params[:job_id])
