@@ -142,7 +142,21 @@ margin-top: 8px;
   </div>
 
 
-<div class="small-8 columns" id="skillset">
+<div class="large-12 columns" id="skills_group">
+<h2>Skills</h2>
+<!--   -->
+ 
+<div>
+<%= f.fields_for :skills do |skill| %>
+  <%= render 'nested_skills', :f => skill %>
+<% end %>
+<%= link_to_add_association 'Add Skill', f, :skills, 
+              :partial => 'nested_skills' , :render_options => { :wrapper => 'inline' }%>
+</div>
+</div>
+
+
+<!-- <div class="small-8 columns" id="skillset">
 <h2>Skills</h2>
 <div id="Skill_slider_combo">
    <div class="row ">
@@ -163,7 +177,7 @@ margin-top: 8px;
 
 <button id="addskill" type="button" class="small button">Add Skills</button>
 <button id="deleteskill" type="button"  class="small button">Delete Skill</button>
-</div>
+</div> -->
 
 
     <div class="large-12 columns">

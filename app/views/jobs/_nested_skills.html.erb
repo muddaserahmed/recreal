@@ -1,6 +1,105 @@
-<div class="skills">
-    <%= f.text_field :name %>
-    <%= f.hidden_field :destroy %>
+<div class="skills"> 
+    <div id="Skill_slider_combo">
+   		<div class="row ">
+   			<div class="large-5 columns">
+        		<!-- <input type="text" id="Skill_name"> -->
+        		<%= f.text_field :name %>
+        	</div>
+  			<div class="small-5 columns">
+				<div id="slider-range-max"></div>
+				<input type="text" id="amount" readonly="readonly"
+   				style = "background-color: #eeeeee"  /> 
+   			</div>
+   			
+   				<%= link_to_remove_association "remove", f %> 
+   				
+		</div>
      <!-- <a href="delete">delete</a> -->
-    <%= link_to_remove_association "remove", f %> 
+     <!--    <%= f.hidden_field :_destroy %> -->
+	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript">
+
+function remove_skills(link) {
+   $(link).hide();
+   $(link).parentNode.hide();
+   var parent = $(link).parentNode;
+   parent.hide();
+   $(link).parentNode.style.display = 'none';
+  $(link).parentNode.parentNode.removeChild($(link).parentNode);
+   $(link).parentNode.hidden = true;
+   $(link).previous("input[type=hidden]").value = "1";
+   $(link).up(".skills").hide();
+   $(link).up(".skills").hidden = true;
+}
+
+$(".skills a").click(function(e) {
+
+    e.preventDefault(); 
+    // $(this).previous("input[type=hidden]").value = "1";           
+    $(this).parent().hide();            
+    
+});
+
+function add_skill() {
+    alert("skill added");
+  }
+$(function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 1,
+      max: 50,
+      value: 1,
+      slide: function( event, ui ) {
+        if(ui.value>=1 && ui.value<10)
+        $( "#amount" ).val( "Average");
+       if(ui.value>=10 && ui.value<20)
+        $( "#amount" ).val( "Good");
+       if(ui.value>=20 && ui.value<30)
+        $( "#amount" ).val( "Above Average");
+       if(ui.value>=30 && ui.value<40)
+        $( "#amount" ).val( "Excellent");
+       if(ui.value>=40 && ui.value<=50)
+        $( "#amount" ).val( "Exceptional");
+      }
+    });
+  $( "#amount" ).val("Average");
+  });
+ var i = 0;
+var original = document.getElementById('Skill_slider_combo');
+$('#addskill').click(function(){
+  $(".Skill_slider_combo:last").after($(".Skill_slider_combo:first").clone(true));
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "Skill_slider_combo"+ ++i; // there can only be one element with an ID
+    original.parentNode.appendChild(clone);
+});
+
+
+$('#deleteskill').click(function(){
+      $(this).closest('div.transactionsWrapper').remove();
+  });
+
+</script>
+
+
