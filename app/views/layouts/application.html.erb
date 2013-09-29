@@ -47,6 +47,22 @@
       }
     </style>
      -->
+
+<style>
+        footer {
+            position: relative;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 50px;
+            width: 100%;
+            display: block;
+            text-align: center;
+            vertical-align: middle;
+            background: #eeeeee;
+        }
+    </style>
+
   </head>
 
   <body style = "background-color: #eeeeee">
@@ -59,12 +75,17 @@
 
     
  <% if !current_user.nil? %>
-   <%= render :partial => 'layouts/navbar' %>
-   <% end %>
+    <% if current_user.profileable_type == "Employer" %>
+      <%= render :partial => 'layouts/navbar' %>
+    <% else %>
+      <%= render :partial => 'layouts/navbar_candidate' %>
+    <% end %>
+<% end %>
 
-   <% if flash[:notice] %>
-    <div id="notice"><%= flash[:notice] %></div>
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
     <% end %> 
+    
 
     
 

@@ -23,6 +23,8 @@ resources :job_applications
 
   match "/candidate_profile/show/:id" => "candidate_profile#show", :as => 'show_profile'
 
+match "/jobs/:id/portal" => "jobs#portal", :as => 'job_portal'
+
   mount RailsAdmin::Engine => '/rAdmin', :as => 'rails_admin'
 
 

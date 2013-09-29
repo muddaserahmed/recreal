@@ -15,9 +15,13 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @company }
+    if @company.jobs.count != 0
+      redirect_to job_portal_path(Job.first.id)
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @company }
+      end
     end
   end
 

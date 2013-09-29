@@ -3,21 +3,6 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css" />
- <style>
- #amount
-{
-color:blue;
-text-align:center; 
-border:0;
-
-}
-#slider-range-max
-{
-margin-top: 8px;
-
-}
- </style>
-
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -35,12 +20,12 @@ margin-top: 8px;
     <%= f.number_field :company_id %>
   </div> -->
   <div class="large-6 columns">
-    <%= f.label :title,  class: "label radius", title: "Job Title", data: {tooltip: false } %>
+    <%= f.label :title,  class: "label radius", title: "Job Title", data: {tooltip: true } %>
     <%= f.text_field :title %>
   </div>
  
     <div class="large-6 columns">
-    <%= f.label :location,class:"label radius",title:"location",data:{tooltip:false}%>
+    <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
 
@@ -49,21 +34,19 @@ margin-top: 8px;
 
   
     <div class="large-3 columns">
-    <%= f.label :posted_date ,class:"label radius",title:"posted_date",data:{tooltip:false}%>
+    <%= f.label :posted_date %> 
     <%= f.date_select :posted_date %>
   </div>
 
  
     <div class="large-3 columns">
-    <%= f.label :last_date  ,class:"label radius",title:
-    "last_date",data:{tooltip:false}%>
+    <%= f.label :last_date %> 
     <%= f.date_select :last_date %>
   </div>
  
   
     <div class="large-3 columns">
-    <%= f.label :start_date ,class:"label radius",title:
-    "start_date",data:{tooltip:false}%>
+    <%= f.label :start_date %> 
     <%= f.date_select :start_date %>
 </div>
 
@@ -74,8 +57,7 @@ margin-top: 8px;
   </div>
 
 <div class="large-4 columns">
-
-  <%= f.label(:industry, " ", :class => "control-label") %>
+  <%= f.label(:industry, "industry", :class => "control-label") %>
   <div class="controls">
     <%= f.select(:industry_id, Industry.all.map { |i| [i.name, i.id] }, :prompt => "Select an Industry", :rows => 1, :style => "width:100%; max-width:100%;") %>
   </div>
@@ -142,84 +124,22 @@ margin-top: 8px;
   </div>
 
 
-<div class="small-8 columns" id="skillset">
+<div class="large-6 columns" id="skillset">
 <h2>Skills</h2>
-<div id="Skill_slider_combo">
-   <div class="row ">
-   <div class="large-7 columns">
-        <input type="text" id="Skill_name">
-        </div>
-  <div class="small-4 columns">
-<div id="slider-range-max"></div>
-<input type="text" id="amount" readonly="readonly"
-   style = "background-color: #eeeeee"  /> </div>
-</div>
+ <div id="slider-range-max"></div>
 
-</div>
-
-
-</div>
-<div class="large-8 columns">
-
-<button id="addskill" type="button" class="small button">Add Skills</button>
-<button id="deleteskill" type="button"  class="small button">Delete Skill</button>
-</div>
-
-
-    <div class="large-12 columns">
-    <%= f.label :job_description, "Job Description" %> 
-    <%= f.text_area :job_description %>
-  </div>
-
-    <div class="large-12 columns">
-    <%= f.label :job_requirements %> 
-    <%= f.text_area :job_requirements %>
-  </div>
-
-<div class="actions">
-    <div class="large-3 columns">
-     <%= f.submit "Create Job", :class => "button radius" %>
-  </div>
-  </div>
+<p>
+  <label for="amount">Skills:</label>
+  <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+</p>
  
+
+<%= f.fields_for :skills do |skill| %>
+  <%= render 'nested_skills', :f => skill %>
 <% end %>
-<!-- 
-      <div class="control-group">
-        <div class="controls">
-          <input type="text" id="skills" name="skills" class="input-xlarge"
-            placeholder="Enter skills for which you want to search jobs"
-            required>
-        </div>
-      </div> 
-
-  <script type="text/javascript">
-    $('#skills').tagsInput({
-      defaultText : "add skills"
-    });
-   $('form').submit(function()
-   {
-
-   })
-  </script>
- -->
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%= link_to_add_association 'Add Skill', f, :skills, 
+              :partial => 'nested_skills' , :render_options => { :wrapper => 'inline' }%>
+</div>
 
 <script language="JavaScript">
 
@@ -251,37 +171,62 @@ $(function() {
     $( "#slider-range-max" ).slider({
       range: "max",
       min: 1,
-      max: 50,
+      max: 5,
       value: 1,
       slide: function( event, ui ) {
-        if(ui.value>=1 && ui.value<10)
+        if(ui.value==1)
         $( "#amount" ).val( "Average");
-       if(ui.value>=10 && ui.value<20)
+       if(ui.value==2)
         $( "#amount" ).val( "Good");
-       if(ui.value>=20 && ui.value<30)
+       if(ui.value==3)
         $( "#amount" ).val( "Above Average");
-       if(ui.value>=30 && ui.value<40)
+       if(ui.value==4)
         $( "#amount" ).val( "Excellent");
-       if(ui.value>=40 && ui.value<=50)
+       if(ui.value==5)
         $( "#amount" ).val( "Exceptional");
       }
     });
   $( "#amount" ).val("Average");
   });
- var i = 0;
-var original = document.getElementById('Skill_slider_combo');
-$('#addskill').click(function(){
-  $(".Skill_slider_combo:last").after($(".Skill_slider_combo:first").clone(true));
-    var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "Skill_slider_combo"+ ++i; // there can only be one element with an ID
-    original.parentNode.appendChild(clone);
-});
+  </script>
 
-
-$('#deleteskill').click(function(){
-      $(this).closest('div.transactionsWrapper').remove();
-  });
 
 </script>
 
+    <div class="large-12 columns">
+    <%= f.label :job_description, "Job Description" %> 
+    <%= f.text_area :job_description %>
+  </div>
 
+    <div class="large-12 columns">
+    <%= f.label :job_requirements %> 
+    <%= f.text_area :job_requirements %>
+  </div>
+
+
+<!-- 
+      <div class="control-group">
+        <div class="controls">
+          <input type="text" id="skills" name="skills" class="input-xlarge"
+            placeholder="Enter skills for which you want to search jobs"
+            required>
+        </div>
+      </div> 
+
+  <script type="text/javascript">
+    $('#skills').tagsInput({
+      defaultText : "add skills"
+    });
+   $('form').submit(function()
+   {
+
+   })
+  </script>
+ -->
+
+  <div class="actions">
+    <div class="large-3 columns">
+     <%= f.submit "Create Job", :class => "button radius" %>
+  </div>
+  </div>
+<% end %>

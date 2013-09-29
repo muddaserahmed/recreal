@@ -1,0 +1,43 @@
+
+
+ <div class="sticky">
+    <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name"><h1><a href="/home/index">recreal</a></h1>
+          </li>   
+              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+
+              
+     <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+
+        </ul>
+
+
+         <section class="top-bar-section">  
+        
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="active"><a href="/exams/1/">Wanna take a quick Test?</a></li>
+            <li class="divider"></li>
+          </ul>
+
+          </section>
+         
+        <section class="top-bar-section"> 
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="active"><a href="/rAdmin">Admin Panel</a></li>
+            <li class="divider"></li>
+          </ul>
+         </section>
+
+            <div style="color: #999; display:block;float: right; padding:10px 20px 10px;" class="nav">
+            <% if user_signed_in? %>
+              You are logged in as <%= current_user.email %> (<%= link_to "Log out", destroy_user_session_path %>)
+            <% else %>
+              <%= link_to 'Log in', new_user_session_path if !user_signed_in? %>
+            <% end %>
+          </div> 
+
+</nav> 
+</div> 
