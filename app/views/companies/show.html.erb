@@ -25,98 +25,16 @@
     
     <!-- Main Content Section -->
     <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
-    <div class="large-9 push-3 columns">
+    <div class="large-9 push-3 columns" style="backgroud-color: #000">
 
+       <h5> You have <%= @company.jobs.count %> open jobs </h5></br>
 
+        <% @company.jobs.each do |job| %>
+        The post of <%= link_to job.title, job_portal_path(job.id) %> has      
+        <b><%= job.job_applications.count %></b> applicants</br></br>
+        <% end %>
 
-<% Job.where(:company_id => current_user.profileable.company.id).each do |job| %>
-    <b><%= link_to job.title, job %></b></br>
-    Closing on : 
-    <%= job.last_date %>
-    
-    <%= link_to 'Show', job %>
-    <%= link_to 'Edit', edit_job_path(job) %>
-    <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> </br></br></br>
- 
-  <div style="padding: 5px; border: thin solid #cccccc;">
-
-<!-- 
-     <% job.job_applications.each do |app| %>
-
-    <br />
-
-    <b><%= link_to app.candidate.name, show_profile_path(app.candidate.id) %></b> 
-
-    </br></br>
-    <% end %>  -->
-
-
-
-
-
-
-
-
-<div class="row" style="padding: 5px; ">   
-<% job.job_applications.each do |app| %>
-
-<div class "small-2 columns" style="padding: 5px;">
-    <a href="/candidate_profile/show/<%= app.candidate.id %>">
-        <%if !app.candidate.basic_profile.picture_url.nil?%>
-      <img src="<%= app.candidate.basic_profile.picture_url %>" style="float: left;margin: 5px; box-shadow: 5px 5px 7px #888888;">
-      <%end%>
-    </a>
-</div>
-
-<div class="small-8 columns">
-    <b><%= link_to app.candidate.name, show_profile_path(app.candidate.id) %></b><br />
-<!--     <%= app.candidate.contact_no %><br />
-    <%= app.candidate.available_in %> days<br />
-    <%= app.candidate.salary_expectation %><br /> -->
-    <% app.candidate.full_profile.positions.each do |p| %>
-              <% if p.is_current?%>
-              <h7 ><%="#{p.title} at #{p.company}"%></h7><br /><br />
-              <%end%>
-      <% end %>
-    <h7 style="color: #919191;"><%="will be available in #{app.candidate.available_in}" %> days</h7><br />
-
-    
-</div>
-<!-- 
-<div class="small-2 columns">
-    <div class="right">
-      hello this is skype lorem ipsum gibbrish
-      Skype URI Button  
-        <script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
-        <div id="<%=app.candidate.created_at%>" >
-            <script type="text/javascript">
-            Skype.ui({
-            "name": "dropdown",
-            "element": "<%=app.candidate.created_at%>",
-            "participants": ["<%=app.candidate.skype_name%>"],
-            "imageSize": 45
-            });
-            </script>
-        </div>
-    </div>
-</div> -->
-
-</div>  
-<!-- <div class="bottom" style="margin-top: 120px;">
-<hr>
-</div> -->
-
-</div>
-<% end %>
-<% end %>
-
-
-</br></br></br>
-
-</ br>
-
-|<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<canvas id="canvas" height="250" width="250"></canvas>
 
 
             
@@ -130,7 +48,7 @@
       <ul class="side-nav">
       <h5> Open Jobs </h5>
         <% Job.where(:company_id => current_user.profileable.company.id).each do |job| %>
-        <li><%= link_to job.title, job %></li>
+        <li><%= link_to job.title, job_portal_path(job.id) %></li>
         <%end%>
         <h5> Closed Jobs </h5>
         <li><a href="#">Section 1</a></li>
@@ -149,3 +67,53 @@
   </div>
     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    var pieData = [  
+
+
+
+        {
+          value: 30,
+          color:"#F38630"
+        },
+        {
+          value : 50,
+          color : "#E0E4CC"
+        },
+        {
+          value : 100,
+          color : "#69D2E7"
+        }
+      
+      ];
+
+  var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+  
+  </script>
