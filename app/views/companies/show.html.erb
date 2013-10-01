@@ -13,6 +13,16 @@
 </div> 
  -->
 
+ <!-- libraries for pie chart with labels -->
+<!-- visit for help: http://chartjs.devexpress.com/ -->
+<!-- 
+    <script src="chartjs/knockout-2.2.1.js"></script>
+    <script src="chartjs/globalize.min.js"></script>
+    <script src="chartjs/dx.chartjs.js"></script>
+ -->
+
+ 
+ <!-- <%= javascript_include_tag "Chart.js" %> -->
 
 <div class="row">
 <p><b>
@@ -27,14 +37,28 @@
     <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
     <div class="large-9 push-3 columns" style="backgroud-color: #000">
 
+      <div class="large-6 columns">
        <h5> You have <%= @company.jobs.count %> open jobs </h5></br>
 
         <% @company.jobs.each do |job| %>
         The post of <%= link_to job.title, job_portal_path(job.id) %> has      
         <b><%= job.job_applications.count %></b> applicants</br></br>
         <% end %>
+      </div>
 
-<canvas id="canvas" height="250" width="250"></canvas>
+      <div class="large-6 columns">
+        <!--  without label pie chart -->
+        <canvas id="canvas" height="250" width="250"></canvas>
+      </div>
+
+<!-- with labels pie chart -->
+<!--     <div class="content">
+      <div class="pane">
+        <div class="long-title"><h3></h3></div>
+        <div id="chartContainer" style="width: 100%; height: 440px;"></div>
+        <div class="credits">www.nytimes.com</div>
+      </div>
+    </div> -->
 
 
             
@@ -85,35 +109,108 @@
 
 
 
+<!-- 
+//  script for chart with labels
+    <script type="text/javascript">
+      $(function ()  
+        {
+   var dataSource = [
+  { country: "USA", medals: 110 },
+  { country: "China", medals: 100 },
+  { country: "Russia", medals: 72 },
+  { country: "Britain", medals: 47 },
+  { country: "Australia", medals: 46 },
+  { country: "Germany", medals: 41 },
+  { country: "France", medals: 40 },
+  { country: "South Korea", medals: 31 }
+];
+
+$("#chartContainer").dxPieChart({
+    dataSource: dataSource,
+    title: "Olympic Medals in 2008",
+    legend: {
+        horizontalAlignment: "center",
+        verticalAlignment: "bottom",
+        margin: 0
+    },
+    series: [{
+        argumentField: "country",
+        valueField: "medals",
+        label: {
+            visible: true,
+            font: {
+                size: 16
+            },
+            connector: {
+                visible: true,
+                width: 0.5
+            },
+            position: "columns",
+            customizeText: function(arg) {
+                return arg.valueText + " ( " + arg.percentText + ")";
+            }
+        }
+    }]
+});
+}
+
+      );
+    </script>
+
+ -->
 
 
 
 
-
-
-
+  <!-- script for chart without labels -->
 
   <script>
 
+// var js_array = [<%= raw @object.to_json %>];
     var pieData = [  
 
 
-
+        <% @company.jobs.each_with_index do |job, index| %>
+        <% if index < @company.jobs.count %>
         {
-          value: 30,
-          color:"#F38630"
+          // value: <%= job.job_applications.count %> + Math.random(),
+          value: Math.random(),
+          color: get_random_color()
         },
+        <% else %>  
         {
-          value : 50,
-          color : "#E0E4CC"
-        },
-        {
-          value : 100,
-          color : "#69D2E7"
+          // value: <%= job.job_applications.count %> + Math.random(),
+          value: Math.random(),
+          color: get_random_color()
         }
+        <% end %>
+        <% end %>
+
+        // {
+        //   value: 30,
+        //   color:"#F38630"
+        // },
+        // {
+        //   value : 50,
+        //   color : "#E0E4CC"
+        // },
+        // {
+        //   value : 100,
+        //   color : "#69D2E7"
+        // }
       
       ];
 
   var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
   
+
+function get_random_color() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+}
+
   </script>
